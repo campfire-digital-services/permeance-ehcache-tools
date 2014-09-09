@@ -2,10 +2,11 @@
 * CacheStatisticsExporter
 *
 * @author Terry Mueller <terry.mueller@permeance.com.au>
-* @see https://www.permeance.com.au/web/terry.mueller/home/-/blogs/how-to-export-ehcache-statistics-to-a-csv-file
+* @author Tim Telcik <tim.telcik@permeance.com.au>
 */
 
 package au.com.permeance.ehcache;
+
 
 import java.net.MalformedURLException;
 import java.util.HashMap;
@@ -23,11 +24,6 @@ import javax.management.remote.JMXServiceURL;
 
 public class CacheStatisticsExporter {
 
-	/*
-    private static String[] ATTRIBUTE_NAMES = new String[] { 
-    	"AssociatedCacheName", "CacheHits", "CacheMisses", "ObjectCount" };
-    */
-	
     private static String[] ATTRIBUTE_NAMES = new String[] { 
     	"AssociatedCacheName",
     	"CacheHitPercentage",
@@ -52,7 +48,9 @@ public class CacheStatisticsExporter {
     };
 
     public static void main(String[] args) {
-        // if (args.length != 4 || !args[1].matches("[0-9]+")) {
+    	
+    	// Parse commnad line arguments
+    	
     	if (args.length < 2 || !args[1].matches("[0-9]+")) {
             System.err.println("usage: java " + CacheStatisticsExporter.class.getName() + " host port [username] [password]");
             System.exit(1);
@@ -71,6 +69,7 @@ public class CacheStatisticsExporter {
         }
 
         // Output header
+        
         for (String attributeName : ATTRIBUTE_NAMES) {
             System.out.print(attributeName);
             System.out.print(",");
@@ -78,6 +77,7 @@ public class CacheStatisticsExporter {
         System.out.println();
 
         // Output values
+        
         try {
             JMXConnector c = JMXConnectorFactory.newJMXConnector(createConnectionURL(host, port), map);
             c.connect();
@@ -85,17 +85,7 @@ public class CacheStatisticsExporter {
             Set<ObjectInstance> mbeansSet = connection.queryMBeans(null, new ObjectName("net.sf.ehcache:type=CacheStatistics,*")); 
             for (ObjectInstance instance : mbeansSet) {
             	AttributeList attrList = connection.getAttributes(instance.getObjectName(), ATTRIBUTE_NAMES);
-
-            	/*
-                for (Object attrObject : attrList) {
-                    Attribute attr = (Attribute) attrObject;
-                    System.out.print("\"");
-                    System.out.print(attr.getValue());
-                    System.out.print("\",");
-                }
-                */
-            	
-            	Map<String,Attribute> attrMap = toMap(attrList);
+            	Map<String,Attribute> attrMap = toNameAttributeMap(attrList);
                 for (String attrName : ATTRIBUTE_NAMES) {
                     Attribute attr = (Attribute) attrMap.get(attrName);
                     Object value = "";
@@ -118,7 +108,7 @@ public class CacheStatisticsExporter {
         return new JMXServiceURL("rmi", "", 0, "/jndi/rmi://" + host + ":" + port + "/jmxrmi");
     }
     
-    private static Map<String,Attribute> toMap( AttributeList attrList ) {
+    private static Map<String,Attribute> toNameAttributeMap( AttributeList attrList ) {
     	
     	HashMap<String,Attribute> attrMap = new HashMap<String,Attribute>();
     	
