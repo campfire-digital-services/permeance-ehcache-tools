@@ -11,7 +11,7 @@ This project contains the ehCache Statistics Exporter.
 
 ## Usage
 
-Please refer to blog article [How to export ehcache statistics to a CSV file](https://www.permeance.com.au/web/terry.mueller/home/-/blogs/how-to-export-ehcache-statistics-to-a-csv-file "How to export ehcache statistics to a CSV file”) for usage details.
+Please refer to blog article [How to export ehcache statistics to a CSV file](https://www.permeance.com.au/web/terry.mueller/home/-/blogs/how-to-export-ehcache-statistics-to-a-csv-file/ "How to export ehcache statistics to a CSV file") for usage details.
 
 ## Building
 
@@ -45,4 +45,6 @@ This will build “permeance-ehcache-XXX.jar” in the “target” folder.
 
 ## References
 
-* [How to export ehcache statistics to a CSV file](https://www.permeance.com.au/web/terry.mueller/home/-/blogs/how-to-export-ehcache-statistics-to-a-csv-file "How to export ehcache statistics to a CSV file”) 
+* [PT Blog - How to export ehcache statistics to a CSV file](https://www.permeance.com.au/web/terry.mueller/home/-/blogs/how-to-export-ehcache-statistics-to-a-csv-file/ "How to export ehcache statistics to a CSV file")
+* [ehcache - Management and Monitoring using JMX](http://www.ehcache.org/documentation/user-guide/jmx/ "ehcache - Management and Monitoring using JMX")
+
