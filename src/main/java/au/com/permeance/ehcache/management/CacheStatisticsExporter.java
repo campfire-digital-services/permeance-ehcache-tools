@@ -1,13 +1,28 @@
 /**
-* CacheStatisticsExporter
+* Copyright (C) 2013 - 2014 Permeance Technologies
+*
+* This program is free software: you can redistribute it and/or modify it under the terms of the
+* GNU General Public License as published by the Free Software Foundation, either version 3 of the
+* License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+* even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License along with this program. If
+* not, see <http://www.gnu.org/licenses/>.
+*/
+package au.com.permeance.ehcache.management;
+
+
+/**
+* Cache Statistics Exporter
 *
 * @author Terry Mueller <terry.mueller@permeance.com.au>
 * @author Tim Telcik <tim.telcik@permeance.com.au>
+* 
+* @see http://ehcache.org/apidocs/net/sf/ehcache/management/CacheStatistics.html
 */
-
-package au.com.permeance.ehcache;
-
-
 import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -52,7 +67,7 @@ public class CacheStatisticsExporter {
     	// Parse commnad line arguments
     	
     	if (args.length < 2 || !args[1].matches("[0-9]+")) {
-            System.err.println("usage: java " + CacheStatisticsExporter.class.getName() + " host port [username] [password]");
+            System.err.println("usage: java " + CacheStatisticsExporter.class.getName() + " host port [username password]");
             System.exit(1);
         }
 

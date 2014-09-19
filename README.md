@@ -1,17 +1,22 @@
-# Permeance ehcache
+# Permeance ehcache Tools
 
-*permeance-ehcache*
+*permeance-ehcache-tools*
 
 This project contain ehcache tools.
 
 ## Overview
 
-This project contains the ehCache Statistics Exporter.
+This project contains ehcache tools, including the ehcache Statistics Exporter.
+
+Please refer to Permeance Technologies’ blog article [How to export ehcache statistics to a CSV file](https://www.permeance.com.au/web/terry.mueller/home/-/blogs/how-to-export-ehcache-statistics-to-a-csv-file/ "How to export ehcache statistics to a CSV file") for usage details.
 
 
 ## Usage
 
-Please refer to blog article [How to export ehcache statistics to a CSV file](https://www.permeance.com.au/web/terry.mueller/home/-/blogs/how-to-export-ehcache-statistics-to-a-csv-file/ "How to export ehcache statistics to a CSV file") for usage details.
+### Run CacheStatisticsExporter
+
+    % java -cp ./permeance-ehcache-tools-0.0.1-SNAPSHOT.jar au.com.permeance.ehcache.management.CacheStatisticsExporter
+    usage: java au.com.permeance.ehcache.management.CacheStatisticsExporter host port [username password]
 
 ## Building
 
@@ -21,10 +26,10 @@ Please refer to blog article [How to export ehcache statistics to a CSV file](ht
 
     $ md work
     $ cd work
-    % md -p permeance-ehcache/master
-    % cd permeance-ehcache/master
+    % md -p permeance-ehcache-tools/master
+    % cd permeance-ehcache-tools/master
     $ git clone https://github.com/permeance/ehcache
-    Cloning into ‘permeance-ehcache'...
+    Cloning into ‘permeance-ehcache-tools’…
     remote: Counting objects: 518, done.
     remote: Compressing objects: 100% (223/223), done.
     remote: Total 518 (delta 173), reused 502 (delta 157)
@@ -36,7 +41,7 @@ Please refer to blog article [How to export ehcache statistics to a CSV file](ht
 
     % mvn -U clean package
 
-This will build “permeance-ehcache-XXX.jar” in the “target” folder.
+This will build “permeance-ehcache-tools-XXX.jar” in the “target” folder.
 
 ## Project Team
 
